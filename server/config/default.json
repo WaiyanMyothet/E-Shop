@@ -1,0 +1,15 @@
+{
+    "mongodb_collections":{
+        "admin":"admins"
+    },
+    "mongodb_settings":{
+        "use_create_index":true,
+        "use_new_url_parser":true
+    },
+    "logging": {
+        "mongodb_collection": "veniqa_admin_server_error_log",
+        "combined_log_file_name": "combined.log",
+        "error_log_file_name": "error.log",
+        "exception_log_file_name": "exceptions.log"
+    }
+}

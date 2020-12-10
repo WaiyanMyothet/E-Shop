@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <form class="p-4">
+    <form class="p-4" @submit.prevent="login">
       <el-input class="mb-4" placeholder="Email" ></el-input>
       <el-input class="mb-4" placeholder="Password" ></el-input>
       <el-button class="m-4 w-full" type="primary">Login</el-button>
@@ -9,7 +9,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods:{
+    login(){
+      
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
