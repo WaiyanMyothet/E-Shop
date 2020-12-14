@@ -4,8 +4,7 @@
     },
     "mongodb_settings": {
         "use_create_index": true,
-        "use_new_url_parser": true,
-        "useUnifiedTopology":true
+        "use_new_url_parser": true
     },
     "logging": {
         "mongodb_collection": "admin_server_error_log",

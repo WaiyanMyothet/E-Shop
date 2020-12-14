@@ -25,19 +25,25 @@ const logger = winston.createLogger({
     )
   ),
   transports: [
+    // new winston.transports.File({
+    //   level: "error",
+    //   filename: "logging/logs/" + config.get("logging.error_log_file_name")
+    // }),
     new winston.transports.File({
-      level: "error",
-      filename: "logging/logs/" + config.logging.error_log_file_name,
-    }),
-    new winston.transports.File({
-      filename: "logging/logs/" + config.logging.combined_log_file_name,
+      filename: "logging/logs/" + config.get("logging.combined_log_file_name")
     }),
   ],
   exceptionHandlers: [
     new winston.transports.File({
-      filename: "logging/logs/" + config.logging.exception_log_file_name,
+      filename: "logging/logs/" + config.get("logging.exception_log_file_name")
     }),
   ],
 });
-
+if (process.env.NODE_ENV !== 'production') {
+  logger.add(
+      new winston.transports.Console({
+          format: winston.format.simple()
+      })
+  );
+}
 module.exports=logger;

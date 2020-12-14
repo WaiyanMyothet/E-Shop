@@ -1,6 +1,6 @@
-const mongoose=require('mongoose');
-const config = require('config');
-const logger=require('../logging/logger');
+const mongoose = require("mongoose");
+const config = require("config");
+const logger = require("../logging/logger");
 
 mongoose.Promise = global.Promise;
 
@@ -11,9 +11,11 @@ const connect = async () => {
       user: process.env.MONGODB_USER,
       pass: process.env.MONGODB_PASSWORD,
       dbName: process.env.MONGODB_DB,
-      useNewUrlParser: config.mongodb_settings.use_new_url_parser,
-      useCreateIndex: config.mongodb_settings.use_create_index
+      useNewUrlParser: config.get("mongodb_settings.use_new_url_parser"),
+      useCreateIndex: config.get("mongodb_settings.use_create_index"),
+      useUnifiedTopology:config.get("mongodb_settings.useUnifiedTopology")
     };
+    //console.log(connectionOptions)
     // Establish a mongoose connection to mongodb
     dbConnection = await mongoose.connect(
       process.env.MONGODB_URL,
@@ -33,6 +35,6 @@ const connect = async () => {
   }
   return dbConnection;
 };
-require("./models/admin");
+require("./models/user");
 
-exports.dbConnection=()=>connect();
+exports.dbConnection = () => connect();
